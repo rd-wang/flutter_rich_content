@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
-
+## [0.0.1] - 初始化
+## [1.1.0] - 更新toast依赖
 * TODO: Describe initial release.
