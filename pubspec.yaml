@@ -18,8 +18,9 @@ dependencies:
   roobo_video:
     git:
       url: git@git.365jiating.com:app_base_project/roobo_video.git
-      ref: 1.1.0
+      ref: 1.2.1
 
+  connectivity: ^3.0.3
   #支持图片双击放大
   #https://github.com/rd-wang/flutter_drag_scale
   flutter_drag_scale:
@@ -27,11 +28,6 @@ dependencies:
       name: flutter_drag_scale
       url: http://172.17.254.117:4000
     version: 0.0.3
-
-  roobo_logger:
-    git:
-      url: git@git.365jiating.com:app_base_project/roobo_logger.git
-      ref: 1.0.0
 
   # 解析html
   simple_html_css: ^3.0.1

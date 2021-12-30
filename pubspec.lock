@@ -65,7 +65,7 @@ packages:
     source: hosted
     version: "1.15.0"
   connectivity:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: connectivity
       url: "https://pub.flutter-io.cn"
@@ -92,13 +92,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.1"
-  convert:
-    dependency: transitive
-    description:
-      name: convert
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "3.0.1"
   crypto:
     dependency: transitive
     description:
@@ -106,13 +99,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.1"
-  dio:
-    dependency: transitive
-    description:
-      name: dio
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "4.0.4"
   fake_async:
     dependency: transitive
     description:
@@ -160,13 +146,6 @@ packages:
       url: "http://172.17.254.117:4000"
     source: hosted
     version: "0.0.3"
-  flutter_easyloading:
-    dependency: transitive
-    description:
-      name: flutter_easyloading
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "3.0.3"
   flutter_spinkit:
     dependency: transitive
     description:
@@ -219,13 +198,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.3"
-  logger:
-    dependency: transitive
-    description:
-      name: logger
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.0"
   matcher:
     dependency: transitive
     description:
@@ -324,39 +296,12 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.2.3"
-  roobo_logger:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "1.0.0"
-      resolved-ref: b5e14db6d1adf01e932c707b56537546eac9a68e
-      url: "git@git.365jiating.com:app_base_project/roobo_logger.git"
-    source: git
-    version: "1.0.0"
-  roobo_net:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "1.0.0"
-      resolved-ref: "3df76495b929bdfeadda7eb3bd3d07becae2f83d"
-      url: "git@git.365jiating.com:app_base_project/roobo_net.git"
-    source: git
-    version: "1.0.0"
-  roobo_toast:
-    dependency: transitive
-    description:
-      path: "."
-      ref: "1.0.0"
-      resolved-ref: "94669e489e33a4ca83527686953bdc70642fd038"
-      url: "git@git.365jiating.com:app_base_project/roobo_toast.git"
-    source: git
-    version: "1.0.0"
   roobo_video:
     dependency: "direct main"
     description:
       path: "."
-      ref: "1.0.1"
-      resolved-ref: aa42220b28bccaa74ee9339f4369fc8d2e130478
+      ref: "1.2.1"
+      resolved-ref: "99a0a20265090c5a28b9115ae1225dbc3055a67d"
       url: "git@git.365jiating.com:app_base_project/roobo_video.git"
     source: git
     version: "1.0.1"
@@ -542,4 +487,4 @@ packages:
     version: "5.1.2"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-  flutter: ">=2.0.2"
+  flutter: ">=2.0.0"

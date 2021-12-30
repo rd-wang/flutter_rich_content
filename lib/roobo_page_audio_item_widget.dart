@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:roobo_rich_content/media_listener.dart';
 import 'package:roobo_rich_content/seek_bar.dart';
+import 'package:roobo_video/video_widget/media_listener.dart';
 
 import 'config_ui_value.dart';
 
