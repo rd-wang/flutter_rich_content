@@ -126,7 +126,7 @@ class _RichContentWidgetState extends State<RichContentWidget> {
                     return SliverToBoxAdapter(
                       child: PageDetailAudioItemWidget(
                         name: items.content.name,
-                        duration: items.content.duration,
+                        duration: items.content.duration.toInt(),
                         url: items.content.url,
                         startPlay: (MediaController mediaController) {
                           if (_preMediaController == null) {

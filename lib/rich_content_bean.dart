@@ -61,7 +61,7 @@ class RichContent {
 /// audio  video  quiz 的内容类    album 为ResourcesWarp  news为RichContent
 class Content {
   String _url;
-  int _duration;
+  num _duration;
   String _text;
   String _image;
   List<String> _tags;
@@ -71,7 +71,7 @@ class Content {
 
   String get url => _url;
 
-  int get duration => _duration;
+  num get duration => _duration;
 
   String get text => _text;
 
