@@ -67,9 +67,11 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
     audioPlayer.onAudioPositionChanged.listen((Duration p) {
       if (mounted) {
         setState(() {
-          // processDuration = p.inSeconds;
-          // progress = p.inSeconds / widget.duration;
-          progress = p.inSeconds / maxDuration;
+          if (p.inSeconds >= maxDuration) {
+            progress = 0.0;
+          } else {
+            progress = p.inSeconds / maxDuration;
+          }
         });
       }
     });

@@ -1,6 +1,6 @@
 name: roobo_rich_content
 description: roobo 富文本
-version: 1.2.0
+version: 1.3.2
 author:
 homepage:
 publish_to: none
@@ -18,7 +18,7 @@ dependencies:
   roobo_video:
     git:
       url: git@git.365jiating.com:app_base_project/roobo_video.git
-      ref: 1.3.0
+      ref: 1.3.1
 
   connectivity: ^3.0.3
   #支持图片双击放大
