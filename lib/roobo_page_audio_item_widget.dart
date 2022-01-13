@@ -138,7 +138,7 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        getDuration(widget.duration),
+                        getDuration((progress * widget.duration).toInt()),
                         style: TextStyle(fontSize: UIValueConfig.font12, color: Color(0xFF747778)),
                       ),
                       Text(

@@ -300,11 +300,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "1.2.1"
-      resolved-ref: "99a0a20265090c5a28b9115ae1225dbc3055a67d"
+      ref: "1.3.1"
+      resolved-ref: a04c56b2bebb4f9e51d1c3bf50b8e5dd4df194b4
       url: "git@git.365jiating.com:app_base_project/roobo_video.git"
     source: git
-    version: "1.0.1"
+    version: "1.3.1"
   rxdart:
     dependency: transitive
     description:
