@@ -4,4 +4,5 @@
 ## [1.3.0] - 数据解析JSON中的double类型被默认为int类型
 ## [1.3.1] - 移除roobo_video_widget init时的delay
 ## [1.3.2] - video不能横屏,音频播放完成进度条归零
+## [1.3.3] - 音频播放完成进度条归零效果优化
 * TODO: Describe initial release.

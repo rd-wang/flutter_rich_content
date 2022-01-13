@@ -51,6 +51,7 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
         case PlayerState.COMPLETED:
           isPlay = false;
           isCompleted = true;
+          progress = 0.0;
           break;
       }
       if (mounted) {
@@ -67,11 +68,7 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
     audioPlayer.onAudioPositionChanged.listen((Duration p) {
       if (mounted) {
         setState(() {
-          if (p.inSeconds >= maxDuration) {
-            progress = 0.0;
-          } else {
-            progress = p.inSeconds / maxDuration;
-          }
+          progress = p.inSeconds / maxDuration;
         });
       }
     });
