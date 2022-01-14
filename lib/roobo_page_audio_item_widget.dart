@@ -93,7 +93,7 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
+      elevation: 0.1,
       margin: EdgeInsets.only(top: UIValueConfig.space8, bottom: UIValueConfig.space8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(UIValueConfig.radius10)),
       child: Padding(

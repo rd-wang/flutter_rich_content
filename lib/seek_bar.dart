@@ -190,12 +190,15 @@ class _SeekBarPainter extends CustomPainter {
     Offset(barLength * secondValue + thumbRadius, centerY);
 
     paint.color = barColor;
+    paint.strokeCap = StrokeCap.round;
     canvas.drawLine(startPoint, endPoint, paint);
 
     paint.color = secondProgressColor;
+    paint.strokeCap = StrokeCap.round;
     canvas.drawLine(startPoint, secondProgressPoint, paint);
 
     paint.color = progressColor;
+    paint.strokeCap = StrokeCap.round;
     canvas.drawLine(startPoint, progressPoint, paint);
 
     final Paint thumbPaint = Paint()..isAntiAlias = true;
