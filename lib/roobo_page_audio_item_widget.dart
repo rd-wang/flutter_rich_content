@@ -10,7 +10,7 @@ class PageDetailAudioItemWidget extends StatefulWidget {
   final String url;
   final int duration;
   final MediaStartPlay startPlay;
-  const PageDetailAudioItemWidget({Key key, this.name, this.url, this.duration, this.startPlay}) : super(key: key);
+  const PageDetailAudioItemWidget({Key key, this.name, this.url, this.duration = 0, this.startPlay}) : super(key: key);
 
   @override
   _PageDetailAudioItemWidgetState createState() => _PageDetailAudioItemWidgetState();
@@ -138,7 +138,7 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        getDuration((progress * widget.duration).toInt()),
+                        progress <= 0 ? "00:00:00" : getDuration((progress * widget.duration).toInt()),
                         style: TextStyle(fontSize: UIValueConfig.font12, color: Color(0xFF747778)),
                       ),
                       Text(
