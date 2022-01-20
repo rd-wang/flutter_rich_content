@@ -105,19 +105,21 @@ class _RichContentWidgetState extends State<RichContentWidget> {
                         ),
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                            return DragScaleContainer(
-                                doubleTapStillScale: true,
-                                child: InkWell(
-                                  child: Container(
-                                    color: Color.fromRGBO(34, 34, 34, 0.9),
-                                    child: CachedNetworkImage(
-                                      imageUrl: items.content.url,
+                            return Material(
+                              child: DragScaleContainer(
+                                  doubleTapStillScale: true,
+                                  child: InkWell(
+                                    child: Container(
+                                      color: Color.fromRGBO(34, 34, 34, 0.9),
+                                      child: CachedNetworkImage(
+                                        imageUrl: items.content.url,
+                                      ),
                                     ),
-                                  ),
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                ));
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                  )),
+                            );
                           }));
                         },
                       ),
