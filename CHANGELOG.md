@@ -10,4 +10,5 @@
 ## [1.3.6] - 图片点击放大
 ## [1.3.7] - audio进度条时长为0时处理
 ## [1.3.8] - audio进度条时长为0/0的判断
+## [1.4.0] - 更新roobo_video为1.4.0
 * TODO: Describe initial release.

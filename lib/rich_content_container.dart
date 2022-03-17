@@ -11,14 +11,14 @@ import 'package:roobo_video/video_widget/media_listener.dart';
 import 'package:roobo_video/video_widget/roobo_video_widget.dart';
 import 'package:simple_html_css/simple_html_css.dart';
 
+import 'net_state/net_state.dart';
+
 class RichContentWidget extends StatefulWidget {
   final String detailJson;
-  final NetNone isNoNet;
 
   const RichContentWidget({
     Key key,
     this.detailJson,
-    this.isNoNet,
   }) : super(key: key);
 
   @override
@@ -66,7 +66,9 @@ class _RichContentWidgetState extends State<RichContentWidget> {
                             RooboVideoWidget(
                               url: items.content.url,
                               title: items.content.name,
-                              isNoNet: widget.isNoNet,
+                              isNoNet: () {
+                                return NetState.getInstance.netResult == NetConnectResult.none;
+                              },
                               startPlay: (MediaController controller) {
                                 if (_preMediaController == null) {
                                   _preMediaController = controller;
