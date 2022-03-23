@@ -12,4 +12,5 @@
 ## [1.3.8] - audio进度条时长为0/0的判断
 ## [1.4.0] - 更新roobo_video为1.4.0
 ## [1.4.1] - 更新roobo_video为1.4.1
+## [1.4.2] - 更新roobo_video为1.4.2
 * TODO: Describe initial release.
