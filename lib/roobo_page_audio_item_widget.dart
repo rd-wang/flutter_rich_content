@@ -6,11 +6,12 @@ import 'package:roobo_video/video_widget/media_listener.dart';
 import 'config_ui_value.dart';
 
 class PageDetailAudioItemWidget extends StatefulWidget {
-  final String name;
-  final String url;
+  final String? name;
+  final String? url;
   final int duration;
-  final MediaStartPlay startPlay;
-  const PageDetailAudioItemWidget({Key key, this.name, this.url, this.duration = 0, this.startPlay}) : super(key: key);
+  final MediaStartPlay? startPlay;
+
+  const PageDetailAudioItemWidget({Key? key, this.name, this.url, this.duration = 0, this.startPlay}) : super(key: key);
 
   @override
   _PageDetailAudioItemWidgetState createState() => _PageDetailAudioItemWidgetState();
@@ -20,7 +21,7 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
   double progress = 0.0;
 
   AudioPlayer audioPlayer = AudioPlayer();
-  MediaController mediaController;
+  MediaController? mediaController;
 
   bool isPlay = false;
 
@@ -33,22 +34,22 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
   void initState() {
     super.initState();
     mediaController = MediaController();
-    audioPlayer.setUrl(widget.url, isLocal: false);
+    audioPlayer.setSourceUrl(widget.url!);
     audioPlayer.onPlayerStateChanged.listen((PlayerState s) {
       switch (s) {
-        case PlayerState.STOPPED:
+        case PlayerState.stopped:
           isPlay = false;
           isCompleted = false;
           break;
-        case PlayerState.PLAYING:
+        case PlayerState.playing:
           isPlay = true;
           isCompleted = false;
           break;
-        case PlayerState.PAUSED:
+        case PlayerState.paused:
           isPlay = false;
           isCompleted = false;
           break;
-        case PlayerState.COMPLETED:
+        case PlayerState.completed:
           isPlay = false;
           isCompleted = true;
           progress = 0.0;
@@ -65,7 +66,7 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
         });
       }
     });
-    audioPlayer.onAudioPositionChanged.listen((Duration p) {
+    audioPlayer.onPositionChanged.listen((Duration p) {
       if (mounted) {
         setState(() {
           if (p.inSeconds != null && p.inSeconds != 0 && maxDuration != 0 && maxDuration != null) {
@@ -75,7 +76,7 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
       }
     });
 
-    mediaController.addListener(
+    mediaController!.addListener(
       MediaWidgetListener(
         videoEnablePlay: (bool enablePlay) {
           setState(() {
@@ -86,8 +87,8 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
           if (isPlay) {
             audioPlayer.pause();
           }
-        },
-
+          return;
+        } as Future<void> Function()?,
       ),
     );
   }
@@ -153,23 +154,29 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: UIValueConfig.space20,right: UIValueConfig.space5),
-              child: IconButton(icon: Image.asset(isPlay ? "res/img/icon_page_audio_stop.png" : "res/img/icon_page_audio_play.png",height: UIValueConfig.space36,width: UIValueConfig.space36,), onPressed: () {
-                if (isPlay) {
-                  audioPlayer.pause();
-                } else {
-                  // 播放回调
-                  if (widget.startPlay != null) {
-                    widget.startPlay(mediaController);
-                  }
-
-                  if (isCompleted) {
-                    audioPlayer.play(widget.url,isLocal: false);
+              padding: const EdgeInsets.only(left: UIValueConfig.space20, right: UIValueConfig.space5),
+              child: IconButton(
+                icon: Image.asset(
+                  isPlay ? "res/img/icon_page_audio_stop.png" : "res/img/icon_page_audio_play.png",
+                  height: UIValueConfig.space36,
+                  width: UIValueConfig.space36,
+                ),
+                onPressed: () {
+                  if (isPlay) {
+                    audioPlayer.pause();
                   } else {
-                    audioPlayer.resume();
+                    // 播放回调
+                    if (widget.startPlay != null) {
+                      widget.startPlay!(mediaController);
+                    }
+
+                    if (isCompleted) {
+                      audioPlayer.play(UrlSource(widget.url!));
+                    } else {
+                      audioPlayer.resume();
+                    }
                   }
-                }
-              },
+                },
               ),
             ),
           ],
@@ -179,9 +186,9 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
   }
 
   getDuration(int duration) {
-    int hour = (duration/3600).truncate();
-    int m = ((duration%3600)/60).truncate();
-    int s = duration%3600%60;
+    int hour = (duration / 3600).truncate();
+    int m = ((duration % 3600) / 60).truncate();
+    int s = duration % 3600 % 60;
     return (hour < 10 ? '0$hour' : hour.toString()) + ":" + (m < 10 ? '0$m' : m.toString()) + ":" + (s < 10 ? '0$s' : s.toString());
   }
 
@@ -191,4 +198,3 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
     super.dispose();
   }
 }
-

@@ -5,23 +5,23 @@ enum RichContentType { audio, video, image, text}
 
 
 class RichContent {
-  int _id;
-  String _type;
-  Content _content;
-  int _createdAt;
-  RichContentType _contentType;
+  int? _id;
+  String? _type;
+  Content? _content;
+  int? _createdAt;
+  RichContentType? _contentType;
 
-  int get id => _id;
+  int? get id => _id;
 
-  String get type => _type;
+  String? get type => _type;
 
-  Content get content => _content;
+  Content? get content => _content;
 
-  int get createdAt => _createdAt;
+  int? get createdAt => _createdAt;
 
-  RichContentType get contentType => _contentType;
+  RichContentType? get contentType => _contentType;
 
-  RichContent({int id, String type, Content content, int createdAt,RichContentType contentType}) {
+  RichContent({int? id, String? type, Content? content, int? createdAt,RichContentType? contentType}) {
     _id = id;
     _type = type;
     _content = content;
@@ -51,7 +51,7 @@ class RichContent {
     map['id'] = _id;
     map['type'] = _type;
     if (_content != null) {
-      map['content'] = _content.toJson();
+      map['content'] = _content!.toJson();
     }
     map['createdAt'] = _createdAt;
     return map;
@@ -60,31 +60,31 @@ class RichContent {
 
 /// audio  video  quiz 的内容类    album 为ResourcesWarp  news为RichContent
 class Content {
-  String _url;
-  num _duration;
-  String _text;
-  String _image;
-  List<String> _tags;
-  int _visitors;
-  int _createdAt;
-  String _name;
+  String? _url;
+  num? _duration;
+  String? _text;
+  String? _image;
+  List<String>? _tags;
+  int? _visitors;
+  int? _createdAt;
+  String? _name;
 
-  String get url => _url;
+  String? get url => _url;
 
-  num get duration => _duration;
+  num? get duration => _duration;
 
-  String get text => _text;
+  String? get text => _text;
 
-  String get image => _image;
+  String? get image => _image;
 
-  List<String> get tags => _tags;
+  List<String>? get tags => _tags;
 
-  int get visitors => _visitors;
+  int? get visitors => _visitors;
 
-  int get createdAt => _createdAt;
-  String get name => _name;
+  int? get createdAt => _createdAt;
+  String? get name => _name;
 
-  Content({String url, int duration, String text, String image, List<String> tags, int visitors, int createdAt,String name}) {
+  Content({String? url, int? duration, String? text, String? image, List<String>? tags, int? visitors, int? createdAt,String? name}) {
     _url = url;
     _duration = duration;
     _text = text;

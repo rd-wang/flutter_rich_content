@@ -24,12 +24,12 @@ class SeekBar extends StatefulWidget {
   final Color progressColor;
   final Color secondProgressColor;
   final Color thumbColor;
-  final Function onStartTrackingTouch;
-  final ValueChanged<double> onProgressChanged;
-  final Function onStopTrackingTouch;
+  final Function? onStartTrackingTouch;
+  final ValueChanged<double>? onProgressChanged;
+  final Function? onStopTrackingTouch;
 
   SeekBar({
-    Key key,
+    Key? key,
     this.progressWidth = 2.0,
     this.thumbRadius = 7.0,
     this.value = 0.0,
@@ -58,15 +58,15 @@ class _SeekBarState extends State<SeekBar> {
   bool _touchDown = false;
 
   _setValue() {
-    _value = _touchPoint.dx / context.size.width;
+    _value = _touchPoint.dx / context.size!.width;
   }
 
   _checkTouchPoint() {
     if (_touchPoint.dx <= 0) {
       _touchPoint = Offset(0, _touchPoint.dy);
     }
-    if (_touchPoint.dx >= context.size.width) {
-      _touchPoint = Offset(context.size.width, _touchPoint.dy);
+    if (_touchPoint.dx >= context.size!.width) {
+      _touchPoint = Offset(context.size!.width, _touchPoint.dy);
     }
   }
 
@@ -92,7 +92,7 @@ class _SeekBarState extends State<SeekBar> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onHorizontalDragDown: (details) {
-        RenderBox box = context.findRenderObject();
+        RenderBox box = context.findRenderObject() as RenderBox;
         _touchPoint = box.globalToLocal(details.globalPosition);
         _checkTouchPoint();
         setState(() {
@@ -100,18 +100,18 @@ class _SeekBarState extends State<SeekBar> {
           _touchDown = true;
         });
         if (widget.onStartTrackingTouch != null) {
-          widget.onStartTrackingTouch();
+          widget.onStartTrackingTouch!();
         }
       },
       onHorizontalDragUpdate: (details) {
-        RenderBox box = context.findRenderObject();
+        RenderBox box = context.findRenderObject() as RenderBox;
         _touchPoint = box.globalToLocal(details.globalPosition);
         _checkTouchPoint();
         setState(() {
           _setValue();
         });
         if (widget.onProgressChanged != null) {
-          widget.onProgressChanged(_value);
+          widget.onProgressChanged!(_value);
         }
       },
       onHorizontalDragEnd: (details) {
@@ -119,7 +119,7 @@ class _SeekBarState extends State<SeekBar> {
           _touchDown = false;
         });
         if (widget.onStopTrackingTouch != null) {
-          widget.onStopTrackingTouch();
+          widget.onStopTrackingTouch!();
         }
       },
       child: Container(
@@ -143,15 +143,15 @@ class _SeekBarState extends State<SeekBar> {
 }
 
 class _SeekBarPainter extends CustomPainter {
-  final double progressWidth;
-  final double thumbRadius;
-  final double value;
-  final double secondValue;
-  final Color barColor;
-  final Color progressColor;
-  final Color secondProgressColor;
-  final Color thumbColor;
-  final bool touchDown;
+  final double? progressWidth;
+  final double? thumbRadius;
+  final double? value;
+  final double? secondValue;
+  final Color? barColor;
+  final Color? progressColor;
+  final Color? secondProgressColor;
+  final Color? thumbColor;
+  final bool? touchDown;
 
   _SeekBarPainter({
     this.progressWidth,
@@ -177,27 +177,27 @@ class _SeekBarPainter extends CustomPainter {
     final Paint paint = Paint()
       ..isAntiAlias = true
       ..strokeCap = StrokeCap.square
-      ..strokeWidth = progressWidth;
+      ..strokeWidth = progressWidth!;
 
     final centerY = size.height / 2.0;
-    final barLength = size.width - thumbRadius * 2.0;
+    final barLength = size.width - thumbRadius! * 2.0;
 
-    final Offset startPoint = Offset(thumbRadius, centerY);
-    final Offset endPoint = Offset(size.width - thumbRadius, centerY);
+    final Offset startPoint = Offset(thumbRadius!, centerY);
+    final Offset endPoint = Offset(size.width - thumbRadius!, centerY);
     final Offset progressPoint =
-    Offset(barLength * value + thumbRadius, centerY);
+    Offset(barLength * value! + thumbRadius!, centerY);
     final Offset secondProgressPoint =
-    Offset(barLength * secondValue + thumbRadius, centerY);
+    Offset(barLength * secondValue! + thumbRadius!, centerY);
 
-    paint.color = barColor;
+    paint.color = barColor!;
     paint.strokeCap = StrokeCap.round;
     canvas.drawLine(startPoint, endPoint, paint);
 
-    paint.color = secondProgressColor;
+    paint.color = secondProgressColor!;
     paint.strokeCap = StrokeCap.round;
     canvas.drawLine(startPoint, secondProgressPoint, paint);
 
-    paint.color = progressColor;
+    paint.color = progressColor!;
     paint.strokeCap = StrokeCap.round;
     canvas.drawLine(startPoint, progressPoint, paint);
 
@@ -206,12 +206,12 @@ class _SeekBarPainter extends CustomPainter {
     thumbPaint.color = Colors.transparent;
     canvas.drawCircle(progressPoint, centerY, thumbPaint);
 
-    if (touchDown) {
-      thumbPaint.color = thumbColor.withOpacity(0.6);
-      canvas.drawCircle(progressPoint, thumbRadius, thumbPaint);
+    if (touchDown!) {
+      thumbPaint.color = thumbColor!.withOpacity(0.6);
+      canvas.drawCircle(progressPoint, thumbRadius!, thumbPaint);
     }
 
-    thumbPaint.color = thumbColor;
-    canvas.drawCircle(progressPoint, thumbRadius * 0.75, thumbPaint);
+    thumbPaint.color = thumbColor!;
+    canvas.drawCircle(progressPoint, thumbRadius! * 0.75, thumbPaint);
   }
 }
