@@ -16,3 +16,4 @@
 ## [1.4.3] - 更新roobo_video为1.4.3
 ## [1.4.5] - 更新roobo_video为1.4.5
 ## [1.5.0] - null-safety 支持
+## [2.0.0] - null-safety 语法warning修复

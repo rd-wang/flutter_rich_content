@@ -55,8 +55,8 @@ class _RichContentWidgetState extends State<RichContentWidget> {
           );
   }
 
-  getItem() {
-    detail!.map((items) {
+  List<SliverToBoxAdapter> getItem() {
+    return detail!.map((items) {
       switch (items.contentType) {
         case RichContentType.video:
           return SliverToBoxAdapter(
@@ -163,6 +163,10 @@ class _RichContentWidgetState extends State<RichContentWidget> {
                 }
               },
             ),
+          );
+        default:
+          return SliverToBoxAdapter(
+            child: Container(),
           );
       }
     }).toList();
