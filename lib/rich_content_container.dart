@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:roobo_rich_content/config_ui_value.dart';
@@ -40,7 +41,27 @@ class _RichContentWidgetState extends State<RichContentWidget> {
       print(e.toString());
       throw Exception('无法解析数据，请检查数据格式！ ${e.toString()}');
     }
+    NetState.init(_updateConnectionState);
     super.initState();
+  }
+
+  static _updateConnectionState(ConnectivityResult result) async {
+    NetConnectResult _connectResult;
+    switch (result) {
+      case ConnectivityResult.wifi:
+        _connectResult = NetConnectResult.wifi;
+        break;
+      case ConnectivityResult.mobile:
+        _connectResult = NetConnectResult.mobile;
+        break;
+      case ConnectivityResult.none:
+        _connectResult = NetConnectResult.none;
+        break;
+      default:
+        _connectResult = NetConnectResult.unknown;
+        break;
+    }
+    NetState.getInstance!.netResult = _connectResult;
   }
 
   @override
@@ -88,7 +109,6 @@ class _RichContentWidgetState extends State<RichContentWidget> {
                       }
                     },
                   ),
-                  Image.asset('res/img/video_player_large_pause.png'),
                 ],
               ),
             ),

@@ -87,8 +87,8 @@ class _PageDetailAudioItemWidgetState extends State<PageDetailAudioItemWidget> {
           if (isPlay) {
             audioPlayer.pause();
           }
-          return;
-        } as Future<void> Function()?,
+          return Future.value(true);
+        },
       ),
     );
   }
